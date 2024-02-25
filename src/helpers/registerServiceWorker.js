@@ -64,7 +64,7 @@ export const registerPushServiceWorker = (areaId) => new Promise(resolve=>{
 
             endpoint = subscription.endpoint;
             // Send the subscription details to the server using the Fetch API.
-            const request = new Request(`${apiBaseUrl}/subscribe`, {
+            const request = new Request(`${apiBaseUrl}/subscription`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'

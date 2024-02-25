@@ -5,8 +5,8 @@ import { apiBaseUrl } from "./globals";
  * @param area 
  * @returns 
  */
-export const fetchAreaByText = (area) => new Promise(async resolve => {
-    const request = new Request(`${apiBaseUrl}/api/search/areas?area=${area}`, {
+export const fetchAreaByText = (suburb) => new Promise(async resolve => {
+    const request = new Request(`${apiBaseUrl}/search?text=${suburb}`, {
         method: 'GET'
     });
     await fetch(request)
@@ -20,10 +20,10 @@ export const fetchAreaByText = (area) => new Promise(async resolve => {
  * @param {{ lat: number, lon: number }} coordinates 
  */
 export const fetchAreaByGPS = (coordinates) => new Promise(async resolve => {
-    const request = new Request(`${apiBaseUrl}/api/search/nearby/area?lat=${coordinates.lat}&lon=${coordinates.lon}`, {
+    const request = new Request(`${apiBaseUrl}/search/nearby/area?lat=${coordinates.lat}&lon=${coordinates.lon}`, {
         method: 'GET'
     });
-   await fetch(request)
+    await fetch(request)
         .then(res => res.json())
         .then(areas => {
             resolve(areas);
@@ -34,8 +34,8 @@ export const fetchAreaByGPS = (coordinates) => new Promise(async resolve => {
  * @param {string} areaId 
  * @returns 
  */
-export const fetchLoadsheddingSchedule = (areaId) => new Promise(async resolve => {
-    const request = new Request(`${apiBaseUrl}/api/area?id=${areaId}`, {
+export const fetchLoadsheddingSchedule = (sid) => new Promise(async resolve => {
+    const request = new Request(`${apiBaseUrl}/schedule?id=${sid}`, {
         method: 'GET'
     });
     await fetch(request)
